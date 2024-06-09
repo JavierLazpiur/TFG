@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Corte Limpio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/5aba00a5ac.js" crossorigin="anonymous"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy7OcDP6zoBPgP19Xh3b5H6A4BRNQIZT0&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+</head>
+<body>
+    <header class="header-container">
+        <ul class="icon-list">
+            <li><a href="https://www.instagram.com/lukebakio/?hl=es"><img src="imagenes/instagram-icon.png" alt="Instagram"></a></li>
+            <li><a href="https://x.com/marianodiaz7?lang=es"><img src="imagenes/twitter-icon.png" alt="Twitter"></a></li>
+            <li><a href="https://www.facebook.com/jnavas16/?locale=es_ES"><img src="imagenes/facebook-icon.png" alt="Facebook"></a></li>
+        </ul>
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo de la Peluquería">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="citas.html">Reservar Cita</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+            </ul>
+        </div>
+        <div class="search-cart">
+            <div class="login">
+                <a href="login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-total">0.00€</span>
+            </div>
+        </div>
+    </header>
+<main>
+    <section class="calendario">
+        <h2>Reserva tu cita</h2>
+        <!-- Contenedor del calendario y lista de horas -->
+        <div class="calendario-container">
+            <!-- Calendario -->
+            <div id="calendario" class="calendario-item"></div>
+            <!-- Lista de horas -->
+            <ul id="listaHoras" class="horas calendario-item"></ul>
+        </div>
+        <div class="button-container">
+            <button id="prev-week">Semana Anterior</button>
+            <button id="next-week">Semana Siguiente</button>
+        </div>
+    </section>
+    <section class="contacto">
+        <div class="contacto-texto">
+            <p>También puede contactar con nosotros, estaremos encantados de atenderte.</p>
+        </div>
+        <div class="contacto-boton">
+            <a href="tel:+34123456789" class="boton-llamar"><i class="fas fa-phone-alt" style="margin-right: 15px;"></i>123456789</a>
+        </div>
+        <div class="contacto-imagen">
+            <img src="imagenes/contacto.png" alt="Imagen de contacto" class="centrada">
+        </div>
+
+    </section>
+</main>
+<div id="popup" class="popup">
+    <span id="close-popup" class="close">&times;</span>
+    <div class="popup-content">
+        <ul id="popup-listaHoras" class="horas"></ul>
+    </div>
+</div>
+    
+<footer>
+    <img src="imagenes/CONBANDERA_KITDIGITAL-2048x191-1.png" alt="CONBANDERA_KITDIGITAL">
+    <p>&copy; 2024 Peluquería Corte Limpio</p>
+</footer>
+<script src="funciones.js"></script>
+</body>
+</html>

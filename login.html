@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Corte Limpio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/5aba00a5ac.js" crossorigin="anonymous"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy7OcDP6zoBPgP19Xh3b5H6A4BRNQIZT0&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+    <meta name="google-signin-client_id" content="776052590079-5bad2ics1im0s9mlid9igmb4vg2864tl.apps.googleusercontent.com">
+</head>
+<body>
+    <header class="header-container">
+        <ul class="icon-list">
+            <li><a href="https://www.instagram.com/lukebakio/?hl=es"><img src="imagenes/instagram-icon.png" alt="Instagram"></a></li>
+            <li><a href="https://x.com/marianodiaz7?lang=es"><img src="imagenes/twitter-icon.png" alt="Twitter"></a></li>
+            <li><a href="https://www.facebook.com/jnavas16/?locale=es_ES"><img src="imagenes/facebook-icon.png" alt="Facebook"></a></li>
+        </ul>
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo de la Peluquería">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="citas.html">Reservar Cita</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+            </ul>
+        </div>
+        <div class="search-cart">
+            <div class="login">
+                <a href="login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-total">0.00€</span>
+            </div>
+        </div>
+    </header>
+<main>
+    <div class="formulario">
+        <h2>Inicia Sesión</h2>
+        <form id="formulario">
+            <div class="input-group">
+                <label for="nombre">Correo:</label>
+                <input type="email" id="correo" name="correo" placeholder="email">
+                <span class="error" id="error-correo"></span>
+            </div>
+            <div class="input-group">
+                <label for="telefono">Contraseña:</label>
+                <input type="password" id="contrasena" name="contrasena">
+                <span class="error" id="error-contrasena"></span>
+            </div>
+            <div class="opciones-pago-container">
+                <button type="submit" class="btn-pagar"></i> Enviar</button>
+            </div>
+        </form>
+    </div>
+    
+</main>
+
+
+</main>
+
+    
+<footer>
+    <img src="imagenes/CONBANDERA_KITDIGITAL-2048x191-1.png" alt="CONBANDERA_KITDIGITAL">
+    <p>&copy; 2024 Peluquería Corte Limpio</p>
+</footer>
+<script>
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log('ID: ' + profile.getId());
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail());
+    }
+    const formulario = document.getElementById('formulario-login');
+const correo = document.getElementById('correo');
+const contrasena = document.getElementById('contrasena');
+const errorCorreo = document.getElementById('error-correo');
+const errorContrasena = document.getElementById('error-contrasena');
+
+formulario.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  limpiarErrores();
+
+  if (validarCorreo() && validarContrasena()) {
+    // Enviar los datos a un servidor o realizar la acción deseada
+    console.log('Formulario válido');
+    //alert('Formulario válido');
+  }
+});
+
+function validarCorreo() {
+  const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const valorCorreo = correo.value.trim();
+
+  if (!valorCorreo) {
+    errorCorreo.textContent = 'Por favor, ingresa tu correo electrónico.';
+    return false;
+  }
+
+  if (!regexEmail.test(valorCorreo)) {
+    errorCorreo.textContent = 'El correo electrónico no es válido.';
+    return false;
+  }
+
+  errorCorreo.textContent = '';
+  return true;
+}
+
+function validarContrasena() {
+  const valorContrasena = contrasena.value.trim();
+
+  if (!valorContrasena) {
+    errorContrasena.textContent = 'Por favor, ingresa tu contraseña.';
+    return false;
+  }
+
+  // Opcional: Validar la longitud de la contraseña
+  if (valorContrasena.length < 8) {
+    errorContrasena.textContent = 'La contraseña debe tener al menos 8 caracteres.';
+    return false;
+  }
+
+  // Opcional: Validar la complejidad de la contraseña (mayúsculas, minúsculas, números, símbolos)
+
+  errorContrasena.textContent = '';
+  return true;
+}
+
+function limpiarErrores() {
+  errorCorreo.textContent = '';
+  errorContrasena.textContent = '';
+}
+    
+</script>
+</body>
+</html>

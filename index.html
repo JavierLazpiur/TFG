@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Corte Limpio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/5aba00a5ac.js" crossorigin="anonymous"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy7OcDP6zoBPgP19Xh3b5H6A4BRNQIZT0&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+</head>
+<body>
+    <header class="header-container">
+        <ul class="icon-list">
+            <li><a href="https://www.instagram.com/lukebakio/?hl=es"><img src="imagenes/instagram-icon.png" alt="Instagram"></a></li>
+            <li><a href="https://x.com/marianodiaz7?lang=es"><img src="imagenes/twitter-icon.png" alt="Twitter"></a></li>
+            <li><a href="https://www.facebook.com/jnavas16/?locale=es_ES"><img src="imagenes/facebook-icon.png" alt="Facebook"></a></li>
+        </ul>
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo de la Peluquería">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="citas.html">Reservar Cita</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+            </ul>
+        </div>
+        <div class="search-cart">
+            <div class="login">
+                <a href="login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-total">0.00€</span>
+            </div>
+        </div>
+    </header>
+<main>
+        <section class="inicio">
+            <h2>Bienvenido a Peluquería Corte Limpio</h2>
+            <h3>Su destino para un corte y estilo perfectos</h3>
+            <div class="columnas">
+                <div>
+                    <img src="imagenes/pose.jpg" alt="Resumen de Peluquería Corte Limpio" class="columna-contenidoimg">
+                    <p class="columna-contenidop">Ofrecemos los mejores servicios de peluquería con profesionales altamente calificados. En Peluquería Corte Limpio, nos esforzamos por brindarle la mejor experiencia de corte y estilo posible. Nuestro equipo de estilistas expertos está aquí para ayudarlo a lucir y sentirse lo mejor posible.</p>
+                </div>
+                <div>
+                    <img src="imagenes/Productos.jpg" alt="Resumen de Peluquería Corte Limpio" class="columna-contenidoimg">
+                    <p class="columna-contenidop">En Peluquería Corte Limpio, utilizamos productos de la más alta calidad para garantizar resultados duraderos y saludables para tu cabello. Además de cortes y estilos personalizados, ofrecemos servicios de coloración, tratamientos capilares, y peinados para eventos especiales. Nuestra prioridad es tu satisfacción, por lo que nos comprometemos a ofrecer un ambiente acogedor y un servicio excepcional en cada visita. Ven y descubre por qué somos la elección preferida en la comunidad.</p>
+                </div>
+                <div>
+                    <img src="imagenes/peluquero.jpg" alt="Resumen de Peluquería Corte Limpio" class="columna-contenidoimg">
+                    <p class="columna-contenidop">En Peluquería Corte Limpio, nos destacamos por nuestra innovación y atención al detalle. Ofrecemos una amplia gama de servicios que incluyen cortes modernos, técnicas avanzadas de coloración y asesoramiento personalizado en el cuidado del cabello. Nuestros profesionales se mantienen actualizados con las últimas tendencias y técnicas para asegurar que siempre obtengas el look que deseas. Disfruta de una experiencia de peluquería superior en un ambiente relajado y profesional. ¡Tu estilo es nuestra pasión!</p>
+                </div>
+        </section> 
+        <h2 class="cortes">Descubre nuestros cortes</h2>
+        <section class="carrusel">
+            <div class="carrusel-cont">  
+                <div class="slider-wrapper">
+                <div class="slider">
+                    <img id="slider-1" src="imagenes/mullet.jpg" alt="">
+                    <img id="slider-2" src="imagenes/corte2.jpg" alt="">
+                    <img id="slider-3" src="imagenes/corte3.jpg" alt="">
+                    <img id="slider-4" src="imagenes/corte4.jpg" alt="">
+                </div>
+                <div class="slider-nav">
+                    <a href="#slider-1"></a>
+                    <a href="#slider-2"></a>
+                    <a href="#slider-3"></a>
+                    <a href="#slider-4"></a>
+                </div>
+                </div>
+                <p data-sourcepos="3:1-3:181"><strong>En nuestra galer&iacute;a de cortes de pelo encontrar&aacute;s una amplia selecci&oacute;n de estilos para hombre, mujer y ni&ntilde;o, desde los m&aacute;s cl&aacute;sicos y atemporales hasta los m&aacute;s modernos</strong></p>
+                <p data-sourcepos="5:1-5:119"><strong>Nuestros profesionales te ayudar&aacute;n a encontrar el corte perfecto para tu tipo de cabello, rostro y estilo personal.</strong></p>
+                <p data-sourcepos="7:1-7:17"><strong>Te ofrecemos:</strong></p>
+                <ul data-sourcepos="9:1-13:0">
+                    <li data-sourcepos="9:1-9:92"><strong>Asesoramiento personalizado:</strong> Te ayudaremos a elegir el corte que mejor se adapte a ti.</li>
+                    <li data-sourcepos="10:1-10:109"><strong>T&eacute;cnicas de corte avanzadas:</strong> Utilizamos las &uacute;ltimas t&eacute;cnicas para garantizar un corte de pelo perfecto.</li>
+                    <li data-sourcepos="11:1-11:99"><strong>Productos de alta calidad:</strong> Utilizamos productos de las mejores marcas para cuidar tu cabello.</li>
+                    <li data-sourcepos="12:1-13:0"><strong>Un ambiente agradable y relajado:</strong> Disfruta de una experiencia &uacute;nica en nuestro sal&oacute;n.</li>
+                </ul>
+                <p data-sourcepos="14:1-14:51"><strong>Reserva tu cita ahora y descubre tu nuevo look.</strong></p>
+                <p data-sourcepos="16:1-16:90"><strong>Adem&aacute;s de la galer&iacute;a de cortes de pelo, tambi&eacute;n puedes encontrar en nuestro sitio web:</strong></p>
+                <ul data-sourcepos="18:1-21:0">
+                    <li data-sourcepos="18:1-18:104"><strong>Informaci&oacute;n sobre nuestros servicios:</strong> Descubre todos los servicios que ofrecemos en nuestro sal&oacute;n.</li>
+                    <li data-sourcepos="19:1-19:97"><strong>Consejos de belleza:</strong> Encuentra consejos para cuidar tu cabello y mantener tu look perfecto.</li>
+                    <li data-sourcepos="20:1-21:0"><strong>Ofertas y promociones:</strong> Aprovecha nuestras ofertas especiales para ahorrar en tu pr&oacute;ximo corte de pelo.</li>
+                </ul>
+                <p data-sourcepos="22:1-22:18"><strong>&iexcl;Te esperamos!</strong></p>
+                <p data-sourcepos="14:1-14:51"><br></p>
+                <div class="button-container">
+                    <a href="citas.html" class="reservar-btn">Reservar Cita</a>
+                </div>
+            </div>
+            </section>
+            <section class="mapa">
+            <h2 class="titulo">Visítanos</h2>
+            <div class="mapa-container">
+                <div class="iframe-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.734863711907!2d-5.919823622790774!3d37.39610203388056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126f4863fd0a65%3A0xcc51b8dd5f42400!2sC.%20Flor%20de%20Salvia%2C%2023%2C%2041019%20Sevilla!5e0!3m2!1ses!2ses!4v1717944340874!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="columnas-mapa">
+                    <div class="mapa-direccion">
+                        <i class="material-icons">location_on</i>
+                        <h3>Nuestra Dirección</h3>
+                        <p>Calle Flor de Salvia 23</p> 
+                        <p> 41020, Sevilla</p>
+                    </div>
+                    <div class="logo">
+                        <img src="imagenes/logo.png" alt="Logo de la Peluquería">
+                    </div>
+                    <div class="info-contacto">
+                        <i class="material-icons">access_time</i>
+                        <h3>Horario y Teléfono</h3>
+                        <p>Horario: Lunes a Viernes 9am - 6pm</p>
+                        <p>Teléfono: +34 123 456 789</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="nav-links">
+            <ul>
+                <li><a href="">Aviso Legal</a></li>
+                <li><a href="">Cookies</a></li>
+                <li><a href="">Politica de privacidad</a></li>
+            </ul>
+        </div>
+        <img src="imagenes/CONBANDERA_KITDIGITAL-2048x191-1.png" alt="CONBANDERA_KITDIGITAL">
+        <p>&copy; 2024 Peluquería Corte Limpio</p>
+    </footer>
+    <script src="funciones.js"></script>
+</body>
+</html>

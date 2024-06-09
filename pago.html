@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagar - Peluquería Corte Limpio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/5aba00a5ac.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header class="header-container">
+        <ul class="icon-list">
+            <li><a href="https://www.instagram.com/lukebakio/?hl=es"><img src="imagenes/instagram-icon.png" alt="Instagram"></a></li>
+            <li><a href="https://x.com/marianodiaz7?lang=es"><img src="imagenes/twitter-icon.png" alt="Twitter"></a></li>
+            <li><a href="https://www.facebook.com/jnavas16/?locale=es_ES"><img src="imagenes/facebook-icon.png" alt="Facebook"></a></li>
+        </ul>
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo de la Peluquería">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="citas.html">Reservar Cita</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+            </ul>
+        </div>
+        <div class="search-cart">
+            <div class="login">
+                <a href="login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-total">0.00€</span>
+            </div>
+        </div>
+    </header>
+    <main>  
+        <div class="formulario">
+            <h2>Procesar Pago</h2>
+            <form id="formulario">
+                <div class="input-group">
+                    <label for="precio">Precio Total:</label>
+                    <span id="precio-pago">0€</span>
+                </div>
+                <div class="input-group">
+                    <label for="dni">DNI:</label>
+                    <input type="text" id="dni" name="dni" pattern="[0-9]{8}[A-Za-z]" required>
+                </div>
+                <div class="input-group">
+                    <label for="tarjeta">Número de Tarjeta:</label>
+                    <input type="text" id="tarjeta" name="tarjeta" pattern="[0-9]{16}" required>
+                </div>
+                <div class="form-row">
+                    <div class="input-group fecha">
+                        <label for="vencimiento"><i class="fas fa-calendar-alt"></i> Fecha de Vencimiento:</label>
+                        <input type="text" id="datepicker" name="vencimiento" required>
+                    </div>
+                    <div class="input-group cvc">
+                        <i class="fas fa-credit-card"></i>
+                        <label for="cvc">CVC:</label>
+                        <input type="text" id="cvc" name="cvc" pattern="[0-9]{3}" required>
+                    </div>
+                </div>
+                <button id="confirmar-pago" type="submit">Confirmar Reserva</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <img src="imagenes/CONBANDERA_KITDIGITAL-2048x191-1.png" alt="CONBANDERA_KITDIGITAL">
+        <p>&copy; 2024 Peluquería Corte Limpio</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const precioPago = document.getElementById('precio-pago');
+        const confirmarPago = document.getElementById('confirmar-pago');
+        const cartTotal = document.getElementById('cart-total'); // Elemento para mostrar el precio en el carrito
+
+        // Obtener el precio del carrito desde localStorage
+        const precioCarrito = localStorage.getItem('precioCarrito') || '0';
+        precioPago.textContent = precioCarrito + '€';
+        cartTotal.textContent = precioCarrito + '€'; // Mostrar el precio en el carrito
+
+        confirmarPago.addEventListener('click', function() {
+            // Aquí podrías agregar la lógica para procesar el pago
+            alert('Pago confirmado por ' + precioCarrito + '€');
+            // Limpiar el carrito después del pago
+            localStorage.removeItem('precioCarrito');
+            // Redirigir a la página principal
+            window.location.href = 'index.html';
+        });
+
+        $( function() {
+            $( "#datepicker" ).datepicker();
+        });
+
+        const formulario = document.getElementById('formulario');
+
+        formulario.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
+
+            // Validar campos del formulario
+            if (!validarFormulario()) {
+                return false; // Detener el envío del formulario si hay errores
+            }
+
+            // Si no hay errores, enviar el formulario
+            this.submit();
+        });
+
+        function validarFormulario() {
+        const dniInput = document.getElementById('dni');
+        const tarjetaInput = document.getElementById('tarjeta');
+        const cvcInput = document.getElementById('cvc');
+
+        // Expresiones regulares para validar el DNI, tarjeta y CVV
+        const dniRegex = /^[0-9]{8}[A-Za-z]$/;
+        const tarjetaRegex = /^[0-9]{16}$/;
+        const cvcRegex = /^[0-9]{3}$/;
+
+        let hayError = false; // Bandera para registrar si hay algún error
+
+        // Validar DNI
+        if (!dniRegex.test(dniInput.value)) {
+            mostrarAlertaError('Has introducido mal el DNI. Vuelve a intentarlo.');
+            hayError = true;
+        }
+
+        // Validar número de tarjeta
+        if (!tarjetaRegex.test(tarjetaInput.value)) {
+            mostrarAlertaError('Has introducido mal el número de tarjeta. Vuelve a intentarlo.');
+            hayError = true;
+        }
+
+        // Validar CVV
+        if (!cvcRegex.test(cvcInput.value)) {
+            mostrarAlertaError('Has introducido mal el CVC. Vuelve a intentarlo.');
+            hayError = true;
+        }
+
+        // Si hay algún error, devolver false
+        return !hayError;
+    }
+
+    function mostrarAlertaError(mensaje) {
+        swal({
+            title: 'Error',
+            text: mensaje,
+            icon: 'error',
+        });
+    }
+});
+    </script>
+</body>
+</html>
+        

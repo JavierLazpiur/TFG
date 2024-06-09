@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peluquería Corte Limpio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://kit.fontawesome.com/5aba00a5ac.js" crossorigin="anonymous"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy7OcDP6zoBPgP19Xh3b5H6A4BRNQIZT0&callback=console.debug&libraries=maps,marker&v=beta">
+    </script>
+</head>
+<body>
+    <header class="header-container">
+        <ul class="icon-list">
+            <li><a href="https://www.instagram.com/lukebakio/?hl=es"><img src="imagenes/instagram-icon.png" alt="Instagram"></a></li>
+            <li><a href="https://x.com/marianodiaz7?lang=es"><img src="imagenes/twitter-icon.png" alt="Twitter"></a></li>
+            <li><a href="https://www.facebook.com/jnavas16/?locale=es_ES"><img src="imagenes/facebook-icon.png" alt="Facebook"></a></li>
+        </ul>
+        <div class="logo">
+            <img src="imagenes/logo.png" alt="Logo de la Peluquería">
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="citas.html">Reservar Cita</a></li>
+                <li><a href="galeria.html">Galería</a></li>
+            </ul>
+        </div>
+        <div class="search-cart">
+            <div class="login">
+                <a href="login.html"><i class="fas fa-user"></i> Iniciar Sesión</a>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-total">0.00€</span>
+            </div>
+        </div>
+    </header>
+<main>  
+    <div class="formulario">
+        <h2>Rellena tus datos</h2>
+        <form id="formulario">
+            <div class="input-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="input-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+            <div class="input-group">
+                <label for="tipo-corte">Selecciona el tipo de corte:</label>
+                <select id="tipo-corte" name="tipo-corte" multiple>
+                    <option value="corte-adulto">Corte adulto</option>
+                    <option value="corte-niño">Corte niño</option>
+                    <option value="barba">Barba</option>
+                    <option value="lados">Lados</option>
+                    <option value="corte-barba">Corte + Barba</option>
+                    <option value="tinte">Tinte</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="precio">Precio Total:</label>
+                <span id="precio">0€</span>
+            </div>
+            <div class="opciones-pago-container">
+                <button type="submit" class="btn-pagar"><i class="fas fa-credit-card"></i> Pagar</button>
+                <button type="button" class="btn-pagar-efectivo"><i class="fas fa-money-bill"></i> Pagar en efectivo</button> <!-- Cambiado a type="button" -->
+            </div>
+        </form>
+    </div>
+    
+
+</main>
+<div class="modal" id="myModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Cita Reservada</h2>
+        <p>¡Te esperamos!</p>
+        <img src="imagenes/gracias.png">
+    </div>
+</div>
+<footer>
+    <img src="imagenes/CONBANDERA_KITDIGITAL-2048x191-1.png" alt="CONBANDERA_KITDIGITAL">
+    <p>&copy; 2024 Peluquería Corte Limpio</p>
+</footer>
+<script src="funciones.js"></script>
+<script>
+const tipoCorte = document.getElementById('tipo-corte');
+    const precioTotal = document.getElementById('precio');
+    const formulario = document.getElementById('formulario');
+
+    const precios = {
+        'corte-adulto': 12,
+        'corte-niño': 9,
+        'barba': 5,
+        'lados': 4,
+        'corte-barba': 15,
+        'tinte': 28
+    };
+
+    tipoCorte.addEventListener('change', function() {
+        const tipoSeleccionado = tipoCorte.value;
+        const precio = precios[tipoSeleccionado] || 0;
+        precioTotal.textContent = precio + '€';
+    });
+
+    formulario.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir el envío por defecto del formulario
+
+        const tipoSeleccionado = tipoCorte.value;
+        const precio = precios[tipoSeleccionado] || 0;
+
+        // Guardar el precio en localStorage
+        localStorage.setItem('precioCarrito', precio);
+
+        // Redirigir a la página de pagos
+        window.location.href = 'pago.html';
+    });
+
+    const pagarEfectivoBtn = document.querySelector('.btn-pagar-efectivo'); // Selecciona el botón "Pagar en efectivo"
+const modal = document.getElementById('myModal'); // Selecciona el modal
+const closeModal = document.querySelector('.close'); // Selecciona el botón de cerrar del modal
+
+pagarEfectivoBtn.addEventListener('click', function() {
+    modal.style.display = 'block'; // Muestra el modal al hacer clic en el botón "Pagar en efectivo"
+});
+
+closeModal.addEventListener('click', function() {
+    modal.style.display = 'none'; // Oculta el modal al hacer clic en el botón de cerrar
+    window.location.href = 'index.html';
+});
+</script>
+</body>
+</html>
